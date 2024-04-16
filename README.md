@@ -1,7 +1,11 @@
-# Vue 3 + Vite
+URL
+https://vite-henna-ten.vercel.app/
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Varlet
+https://varlet.gitee.io/varlet-ui/?ref=madewithvuejs.com#/zh-CN/index
 
-## Recommended IDE Setup
+Install Tailwind CSS with Vue 3 and Vite
+https://v2.tailwindcss.com/docs/guides/vue-3-vite
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+tailwindcss
+https://tailwindcss.com/
