@@ -1,7 +1,5 @@
-<script setup></script>
-
 <template>
-  <div class="w-full h-64 bg-[#252a41] rounded">
+  <div class="w-full h-52 bg-[#252a41] rounded mb-4">
     <div class="h-2 bg-[#198ff5] rounded-t-lg"></div>
 
     <div class="flex flex-col justify-center pt-10 text-center">
@@ -50,5 +48,15 @@
     </div>
   </div>
 </template>
+
+<script >
+export default {
+  props: ["title"],
+
+  setup() {
+    return {};
+  },
+};
+</script>
 
 <style scoped></style>
