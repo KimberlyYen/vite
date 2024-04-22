@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
+
+:root {
   background-color: hsl(230, 17%, 14%);
-} */
+}
+
 /* 
 a {
   font-weight: 500;
