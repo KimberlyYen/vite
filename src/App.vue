@@ -1,38 +1,66 @@
 <script>
-import { reactive, ref } from "vue";
-// import HelloWorld from "./components/HelloWorld.vue";
+import { onMounted, reactive } from "vue";
 import Card from "./components/Cards.vue";
+import OverView from "./components/OverView.vue";
+
 export default {
   props: ["title"],
   components: {
     Card,
+    OverView,
   },
   setup() {
-    const cardsContent = reactive([
-      {
-        name: "蛋餅",
-        price: 30,
-        vegan: false,
-      },
-      {
-        name: "飯糰",
-        price: 35,
-        vegan: false,
-      },
-      {
-        name: "小籠包",
-        price: 60,
-        vegan: false,
-      },
-      {
-        name: "蘿蔔糕",
-        price: 30,
-        vegan: true,
-      },
-    ]);
+    // 資料寫死
+    // const cardsContent = reactive([
+    //   {
+    //     name: "蛋餅",
+    //     price: 30,
+    //     vegan: false,
+    //   },
+    //   {
+    //     name: "飯糰",
+    //     price: 35,
+    //     vegan: false,
+    //   },
+    //   {
+    //     name: "小籠包",
+    //     price: 60,
+    //     vegan: false,
+    //   },
+    //   {
+    //     name: "蘿蔔糕",
+    //     price: 30,
+    //     vegan: true,
+    //   },
+    // ]);
+
+    // console.log(typeof cardsContent)
+
+    // 資料來自 API
+    const cardsContentByAPI = reactive([]);
+    function getCard() {
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+        .then((json) => {
+          cardsContentByAPI.push(json);
+          cardsContentByAPI.map((item) => {
+            item.map((item) => {
+              cardsContentByAPI.push(item);
+            });
+            // shift() 方法，會移除陣列的第一個元素
+            cardsContentByAPI.shift() 
+            console.log(cardsContentByAPI.length)
+          });
+        });
+    }
+
+    onMounted(() => {
+      getCard();
+    });
 
     return {
-      cardsContent,
+      // cardsContent,
+      cardsContentByAPI,
     };
   },
 };
@@ -52,10 +80,17 @@ export default {
 
     <!-- Card -->
     <Card
-      v-for="(item, index) in cardsContent"
+      v-for="(item, index) in cardsContentByAPI"
       :key="index"
-      :title="item.name"
+      :title="item.username"
     />
+
+    <!-- tittle -->
+    <h1 class="mt-5 mb-3 text-xl font-bold text-white">
+      Social Media Dashboard
+    </h1>
+    <!-- Overview -->
+    <OverView :title="87" />
   </div>
 </template>
 

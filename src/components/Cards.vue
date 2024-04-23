@@ -42,7 +42,7 @@
         </svg>
         <p class="pt-2 ml-1 font-bold text-[#8b97c6]">@nathanf</p>
       </div>
-      <p class="pt-2 text-6xl font-bold text-white">{{ title }}</p>
+      <p class="p-3 pt-2 text-4xl font-bold text-white tittle">{{ title }}</p>
       <p class="pt-5 text-sm font-light font-Inter text-[#8b97c6] tracking-widest">Followers</p>
 
     </div>
@@ -52,11 +52,14 @@
 <script >
 export default {
   props: ["title"],
-
   setup() {
     return {};
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.tittle {
+word-wrap:break-word;
+}
+</style>
