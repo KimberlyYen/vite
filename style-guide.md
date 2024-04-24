@@ -13,7 +13,7 @@ The designs were created to the following widths:
 
 ### Primary
 
-- Lime Green: hsl(163, 72%, 41%)
+- Lime Green: ( #1db489) hsl(163, 72%, 41%)
 - Bright Red: hsl(356, 69%, 56%)
 
 - Facebook: #198ff5 (hsl(208, 92%, 53%))

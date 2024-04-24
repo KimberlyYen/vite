@@ -4,38 +4,12 @@ import Card from "./components/Cards.vue";
 import OverView from "./components/OverView.vue";
 
 export default {
-  props: ["title"],
+  props: ["title", "checked"],
   components: {
     Card,
     OverView,
   },
   setup() {
-    // 資料寫死
-    // const cardsContent = reactive([
-    //   {
-    //     name: "蛋餅",
-    //     price: 30,
-    //     vegan: false,
-    //   },
-    //   {
-    //     name: "飯糰",
-    //     price: 35,
-    //     vegan: false,
-    //   },
-    //   {
-    //     name: "小籠包",
-    //     price: 60,
-    //     vegan: false,
-    //   },
-    //   {
-    //     name: "蘿蔔糕",
-    //     price: 30,
-    //     vegan: true,
-    //   },
-    // ]);
-
-    // console.log(typeof cardsContent)
-
     // 資料來自 API
     const cardsContentByAPI = reactive([]);
     function getCard() {
@@ -48,10 +22,21 @@ export default {
               cardsContentByAPI.push(item);
             });
             // shift() 方法，會移除陣列的第一個元素
-            cardsContentByAPI.shift() 
-            console.log(cardsContentByAPI.length)
+            cardsContentByAPI.shift();
+            // console.log(cardsContentByAPI.length)
           });
         });
+    }
+
+    //當我點選全選時
+    //我要傳值進到 card 元件
+    //使得所有 checkBox 都被勾選
+    const isChecked = reactive(true)
+    function select(){
+      console.log(isChecked)
+      if ( isChecked === true ){
+        checked = true
+      }
     }
 
     onMounted(() => {
@@ -59,8 +44,9 @@ export default {
     });
 
     return {
-      // cardsContent,
       cardsContentByAPI,
+      isChecked,
+      select,
     };
   },
 };
@@ -78,16 +64,24 @@ export default {
       </h2>
     </div>
 
+    <!-- checkAll -->
+    <div class="flex flex-row mr-auto" @click="$emit('someEvent')">
+      <input type="checkbox" class="flex mb-4 ml-2 mr-auto" id="option-all" 
+      />
+      <label for="option-all" class="pb-4 pl-2 text-white">Select All</label>
+    </div>
     <!-- Card -->
     <Card
       v-for="(item, index) in cardsContentByAPI"
       :key="index"
       :title="item.username"
+      :checked="isChecked"
+      @some-event="isChecked"
     />
 
     <!-- tittle -->
     <h1 class="mt-5 mb-3 text-xl font-bold text-white">
-      Social Media Dashboard
+      Overview - Today
     </h1>
     <!-- Overview -->
     <OverView :title="87" />
